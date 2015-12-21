@@ -16,14 +16,25 @@ GetSystemTime(&t);
 sprintf(nom,"%s.txt",theme);
 FILE* fichier = NULL;
 fichier = fopen(nom, "a+");
-sprintf(complet,"%d%d%d#%d%d%d#%s#%s",t.wDay,t.wMonth,t.wYear,t.wHour,t.wMinute,t.wSecond,msg,pseudo);
+sprintf(complet,"\n%d%d%d#%d%d%d#%s#%s",t.wDay,t.wMonth,t.wYear,t.wHour,t.wMinute,t.wSecond,msg,pseudo);//# sera un separateur pour recuperer les différentes information
 fputs(complet,fichier);
 printf("%s",complet);
+// format du fichier pour chaque ligne date#heure#msg#pseudo
 fclose(fichier);
 
 }
-int main()
+void nouveauMessage(){
+char theme[30];char msg[300];
+char pseudo[10];
+printf("Entrer le theme : \n ");
+scanf("%s",theme)    ;
+printf("Entrer votre message :\n ");
+scanf("%s",msg)    ;
+posterMessage(theme,msg,"alphonse");
+
+}
+int main(int argc, CHAR* argv[])
 {
-    posterMessage("math","a+b","alphonse");
+nouveauMessage();
     return 0;
 }
